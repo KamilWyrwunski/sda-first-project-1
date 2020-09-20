@@ -49,6 +49,9 @@ public class ConsoleUtils {
     public static final String c_purple(String message) {
         return C_PURPLE + message + C_RESET;
     }
+    public static final String c_red(String message){
+        return C_RED + message + C_RESET;
+    }
     public static String promptForString(String prompt) {
         Scanner myObj = new Scanner(System.in);
         System.out.print(prompt);

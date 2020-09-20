@@ -6,6 +6,18 @@ import java.util.Scanner;
 import static pl.sdacademy.ConsoleUtils.*;
 
 public class HeroBuilder {
+    public static HeroBuilder Instance;
+    private HeroBuilder(){
+
+    }
+
+        public static HeroBuilder getInstance() {
+        if (Instance == null){
+            Instance = new HeroBuilder();
+        }
+            return Instance;
+
+    }
 
     public static int skillPoints = 100;
 
@@ -21,11 +33,11 @@ public class HeroBuilder {
 
         String name = promptForString("Enter character name> ");
         String sexInput = promptForString("Enter character sex [M]ale, [F]emale, [O]ther> ");
-        String sexSafeInput = sexInput.toLowerCase();
+        String lowerCasesexInput = sexInput.toLowerCase();
 
         Sex sex = null;
 
-        switch (sexSafeInput) {
+        switch (lowerCasesexInput) {
             case "m":
             case "ma":
             case "mal":
@@ -82,7 +94,11 @@ public class HeroBuilder {
                 case 5: wisdom = readSkillValueFor("wisdom", wisdom); break;
                 case 6: charisma = readSkillValueFor("charisma", charisma); break;
                 default:
-                    boolean allStatFieldsSet = strength > 0 && stamina > 0 && dexterity > 0 && intelligence > 0 && wisdom > 0 && charisma > 0;
+                    boolean allStatFieldsSet = strength > 0 &&
+                            stamina      > 0 &&
+                            dexterity    > 0 &&
+                            intelligence > 0 &&
+                            wisdom       > 0 && charisma > 0;
                     if(skillPoints == 0 && allStatFieldsSet) {
                         exit = true;
                     } else {

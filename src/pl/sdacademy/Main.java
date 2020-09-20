@@ -6,6 +6,18 @@ public class Main {
 
     public static void main(String[] args) {
 
+       // HeroBuilder hb = new HeroBuilder();
+        HeroBuilder hb = HeroBuilder.getInstance();
+        Hero hero = hb.buildHero();
+
+        hero.printInfo();
+
+//Game game =new Game();
+//game.start();
+
+
+        System.exit(0);
+
         ConsoleUtils.debugMode = true;
 
         System.out.println("Just a " + C_PURPLE_UNDERLINED + "RED" + C_RESET + " test...");
@@ -13,8 +25,8 @@ public class Main {
         System.out.println(String.format("%20sD %5s C", 93, "X"));
         System.out.printf("My name is %s%n", "joe");
 
-        HeroBuilder hb = new HeroBuilder();
-        Hero hero = hb.buildHeroForTesting();//hb.buildHero();
+        //HeroBuilder hb = new HeroBuilder();
+       // Hero hero = hb.buildHeroForTesting();//hb.buildHero();
         hero.printInfo();
 
         String names[] = {"A", "B", "C"};

@@ -2,11 +2,13 @@ package pl.sdacademy;
 
 import java.util.Date;
 
+import static pl.sdacademy.Sex.*;
+
 public class Hero {
 
     //statistics given by player
     private String name = "unnamed_hero";
-    private Sex sex = Sex.MALE;
+    private Sex sex = MALE;
 
     // phisical stats
     private int strength;
@@ -32,9 +34,9 @@ public class Hero {
 
     public Hero(String name, Sex sex, int strength, int stamina, int dexterity, int intelligence, int wisdom, int charisma) {
         enemy = new Enemy("HERO_ENEMY");
-        int maleBonus = sex == Sex.MALE ? 10 : 0;
-        int femaleBonus = sex == Sex.FEMALE ? 10 : 0;
-        int otherBonus = sex == Sex.OTHER ? 10 : 0;
+        int maleBonus = sex == MALE ? 10 : 0;
+        int femaleBonus = sex == FEMALE ? 10 : 0;
+        int otherBonus = sex == OTHER ? 10 : 0;
 
         this.name = name;
         this.sex = sex;
@@ -78,13 +80,14 @@ public class Hero {
     }
 
     public void applyDamage(byte amount) {
-        System.out.println("Dealing " + amount + " damage to " + name);
+        System.out.println("Dealing " + ConsoleUtils.c_red(String.valueOf(amount)) + " damage to " + name);
         health -= amount;
 
         if(health < 0) {
             health = 0;
-
+            ConsoleUtils.printDebug("Gracz zginal - koniec gry");
             System.out.println("Enemy: " + name + " is dead!");
+            System.exit(0);
         }
     }
 
