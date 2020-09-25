@@ -1,10 +1,17 @@
 package pl.sdacademy;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static pl.sdacademy.ConsoleUtils.*;
 
 public class Enemy {
+    public int getCoins(){
+        return coins;
+    }
+
+
+
 
     public static int enemiesCount = 0;
 
@@ -53,21 +60,28 @@ public class Enemy {
 
         System.out.println("[DEBUG] random: " + random + " attackChance: " + attackHitChance);
 
+
         if (isHit) {
             System.out.println("Dealing " + C_RED + amount + C_RESET + " damage to " + name);
             health -= amount;
 
             // przypadek gdy wrog zginal
-            if(health < 0) {
+
+            if(health < 0 ) {
+
                 health = 0;
+                enemiesCount++;
 
                 isDead = true;
                 System.out.println("Enemy: " + name + " is dead!");
             }
-        } else {
+        } else  {
             System.out.println("Enemy dodged this!");
+
         }
     }
+
+
 
     public void getRandomTaunt() {
         int random = ThreadLocalRandom.current().nextInt(0, 3 + 1);

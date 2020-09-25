@@ -6,6 +6,7 @@ import static pl.sdacademy.Sex.*;
 
 public class Hero {
 
+
     //statistics given by player
     private String name = "unnamed_hero";
     private Sex sex = MALE;
@@ -133,4 +134,7 @@ public class Hero {
         Date d = new Date();
         return (Enemy) enemy;
     }
+    public void receiveCoins(int coins, Enemy enemy) {
+          this.coins = coins + enemy.getCoins();
+}
 }
